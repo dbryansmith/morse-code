@@ -37,12 +37,22 @@ morseLibrary = {"A": ".-",
                 " ": " . "}
 
 
-convert = input("What would you like to convert? ")
-upconvert = convert.upper()
-uclist = list(upconvert)
-x = []
-for item in uclist:
-    if item in morseLibrary:
-        x.append(morseLibrary[item])
-print(*x, sep='')
+def morseConversion():
+    while True:
+        convert = input("What would you like to convert? ")
+        upconvert = convert.upper()
+        uclist = list(upconvert)
+        convertlist = []
+        for item in uclist:
+            if item in morseLibrary:
+                convertlist.append(morseLibrary[item])
+            else:
+                if item not in morseLibrary:
+                    print("Invalid, please try again")
+        print(*convertlist, sep='')
+        convertagain = input("Convert something else? [Y for yes, anything else for no]: ").upper()
+        if convertagain != "Y":
+            print("Thank you!")
+            break
+    return
 
